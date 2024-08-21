@@ -1,0 +1,16 @@
+services:
+  web:
+    container_name: stemclubs-astro
+    image: davidmach14/astro:latest
+    build:
+      context: .
+      args:
+        - REPO_URL=https://github.com/your-username/your-repo.git
+    ports:
+      - "4321:4321"
+    volumes:
+      - .:/app
+    environment:
+      - NODE_ENV=development
+    command: npm run dev -- --host 0.0.0.0
+    restart: unless-stopped
